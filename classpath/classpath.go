@@ -34,7 +34,7 @@ func (self *Classpath) ToString() string {
 
 // 解析jre路径
 func (self *Classpath) parseBootAndExtClassPath(jreOption string) {
-  jrePath := parseJreOption(jreOption)
+  // jrePath := parseJreOption(jreOption)
 
 }
 
@@ -49,12 +49,15 @@ func parseJreOption(jreOption string) string {
   if home := os.Getenv("JAVA_HOME"); home != "" {
     return home;
   }
-  panic("can't not found jre")
+  panic("can not found jre")
 }
 
 // 解析用户类路径
 func (self *Classpath) parseUserClassPath(cpOption string) {
-
+  if cpOption == "" {
+    cpOption = "."
+  }
+  self.userClassPath = newEntry(cpOption)
 }
 
 // 判断文件夹是否存在

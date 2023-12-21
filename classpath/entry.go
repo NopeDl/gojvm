@@ -15,10 +15,10 @@ type Entry interface {
 
 func newEntry(path string) Entry {
 	if strings.Contains(path, osPathListSeperator) {
-		return newCompositeEntry(path)[0]
+		return newCompositeEntry(path)
 	}
 	if strings.HasSuffix(path, "*") {
-		return newWildcardEntry(path)[0]
+		return newWildcardEntry(path)
 	}
 	if strings.HasSuffix(path, ".jar") || strings.HasSuffix(path, ".JAR") ||
 		strings.HasSuffix(path, ".zip") || strings.HasSuffix(path, ".ZIP") {
